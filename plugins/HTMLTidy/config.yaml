@@ -17,4 +17,3 @@ applications:
     cms:
         methods:
             preview_with_html_tidy: HTMLTidy::CMS::_app_cms_preview_with_html_tidy
-

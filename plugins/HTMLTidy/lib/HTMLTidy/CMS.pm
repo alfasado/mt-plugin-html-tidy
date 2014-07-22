@@ -16,6 +16,13 @@ sub _app_cms_preview_with_html_tidy {
     require MT::CMS::Entry;
     $app->validate_magic or return;
     my $entry = MT::CMS::Entry::_create_temp_entry( $app );
+    if (! $entry->authored_on ) {
+        my $d = $app->param( 'authored_on_date' );
+        my $t = $app->param( 'authored_on_time' );
+        my $ts = $d . $t;
+        $ts =~ s/[^0-9]//g;
+        $entry->authored_on( $ts );
+    }
     my $component = MT->component( 'HTMLTidy' );
     my $tmpl = $component->get_config_value( 'preview_template_for_tidy', 'blog:' . $blog->id );
     if (! $tmpl ) {
