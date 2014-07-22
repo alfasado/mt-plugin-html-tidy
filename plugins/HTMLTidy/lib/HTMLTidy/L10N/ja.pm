@@ -12,6 +12,10 @@ our %Lexicon = (
     'Original HTML' => 'オリジナルのHTMLソース',
     'Clean up by HTML Tidy' => 'HTML Tidyによる整形結果',
     'No error was found.' => 'エラーは見つかりませんでした。',
+    'Mode' => 'モード',
+    'Auto' => '自動判別',
+    'View' => '表示',
+    'Show Clean up by HTML Tidy' => 'HTML Tidyによる整形結果を表示',
     );
 
 1;

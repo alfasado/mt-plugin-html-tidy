@@ -30,8 +30,10 @@
 </mt:loop>
 <h3><__trans phrase="Original HTML"></h3>
 <pre class="prettyprint linenums"><mt:var name="original"></pre>
+<mt:if name="result">
 <h3><__trans phrase="Clean up by HTML Tidy"></h3>
 <pre class="prettyprint linenums"><mt:var name="result" escape="html"></pre>
+</mt:if>
     <div class="actions-bar" style="text-align:center;">
       <form action="" method="get" onsubmit="window.close();return false;">
         <button

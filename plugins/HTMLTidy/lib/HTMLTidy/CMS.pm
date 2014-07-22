@@ -24,7 +24,9 @@ sub _app_cms_preview_with_html_tidy {
         $entry->authored_on( $ts );
     }
     my $component = MT->component( 'HTMLTidy' );
-    my $tmpl = $component->get_config_value( 'preview_template_for_tidy', 'blog:' . $blog->id );
+    my $tmpl = $component->get_config_value( 'tidy_preview_template', 'blog:' . $blog->id );
+    my $mode = $component->get_config_value( 'tidy_html_mode', 'blog:' . $blog->id );
+    my $show_clean = $component->get_config_value( 'tidy_show_clean', 'blog:' . $blog->id );
     if (! $tmpl ) {
         my $_tmpl = File::Spec->catfile( $component->path, 'tmpl', 'preview.tmpl' );
         require MT::FileMgr;
@@ -53,6 +55,9 @@ sub _app_cms_preview_with_html_tidy {
         with_anchor => 1,
         language => utf8_off( $app->user->preferred_language ),
     );
+    if ( $mode ) {
+        $params{ mode } = utf8_off( $mode );
+    }
     my $request = POST( $api, [ %params ] );
     my $ua = LWP::UserAgent->new( agent => $user_agent );
     my $res = $ua->request( $request );
@@ -69,7 +74,9 @@ sub _app_cms_preview_with_html_tidy {
     }
     $param{ errors_loop } = \@errors_loop;
     $param{ original } = $original;
-    $param{ result } = $result->{ result };
+    if ( $show_clean ) {
+        $param{ result } = $result->{ result };
+    }
     $app->build_page( $dialog, \%param );
 }
 

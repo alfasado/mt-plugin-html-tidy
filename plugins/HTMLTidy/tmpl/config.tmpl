@@ -8,10 +8,34 @@
 </mtapp:setting>
 <mt:else>
 <mtapp:setting
-    id="preview_template_for_tidy"
+    id="tidy_html_mode"
+    label="<__trans phrase="Mode">">
+<ul>
+<li>
+<select name="tidy_html_mode" id="tidy_html_mode">
+<option value="" <mt:unless name="tidy_html_mode">selected="selected"</mt:unless>><__trans phrase="Auto"></option>
+<option value="html" <mt:if name="tidy_html_mode" eq="html">selected="selected"</mt:if>>HTML</option>
+<option value="html5" <mt:if name="tidy_html_mode" eq="html5">selected="selected"</mt:if>>HTML5</option>
+<option value="xhtml" <mt:if name="tidy_html_mode" eq="xhtml">selected="selected"</mt:if>>XHTML</option>
+</select>
+</li>
+</ul>
+</mtapp:setting>
+<mtapp:setting
+    id="tidy_preview_template"
     label="<__trans phrase="Preview Template">">
 <ul>
-<li><textarea rows="10" class="text high full" name="preview_template_for_tidy" id="preview_template_for_tidy"><mt:var name="preview_template_for_tidy" escape="html"></textarea></li>
+<li><textarea rows="10" class="text high full" name="tidy_preview_template" id="tidy_preview_template"><mt:var name="tidy_preview_template" escape="html"></textarea></li>
 </ul>
+</mtapp:setting>
+<mtapp:setting
+    id="tidy_show_clean"
+    label="<__trans phrase="View">">
+<ul>
+<li><label><input type="checkbox" name="tidy_show_clean" id="show_tidy_clean" class="cb" value="1"
+<mt:if name="tidy_show_clean">checked="checked"</mt:if>
+ /> <__trans phrase="Show Clean up by HTML Tidy"></label></li>
+</ul>
+<input type="hidden" name="tidy_show_clean" value="0" />
 </mtapp:setting>
 </mt:unless>
