@@ -1,0 +1,19 @@
+<mt:if tag="EntryClass" eq="entry">
+<h2 class="title"><$mt:EntryTitle$></h2>
+<p>Date: <$mt:EntryDate format="%x"$><mt:IfArchiveTypeEnabled archive_type="Category"><mt:If tag="EntryPrimaryCategory"> <mt:EntryPrimaryCategory><a href="<$mt:CategoryArchiveLink$>" rel="tag" class="label category <$mt:CategoryBasename$>"><$mt:CategoryLabel$></a></mt:EntryPrimaryCategory></mt:If></mt:IfArchiveTypeEnabled></p>
+<div class="entry-content">
+    <$mt:EntryBody$>
+<mt:if tag="EntryMore" eq="entry">
+    <$mt:EntryMore$>
+</mt:if>
+</div>
+<mt:else>
+<h2 class="title"><$mt:PageTitle$></h2>
+<p>Date: <$mt:PageDate format="%x"$></p>
+<div class="entry-content">
+    <$mt:PageBody$>
+<mt:if tag="PageMore" eq="entry">
+    <$mt:PageMore$>
+</mt:if>
+</div>
+</mt:if>

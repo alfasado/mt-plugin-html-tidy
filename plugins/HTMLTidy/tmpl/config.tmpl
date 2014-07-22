@@ -1,0 +1,17 @@
+<mt:unless name="request.blog_id">
+<mtapp:setting
+    id="tidy_api"
+    label="<__trans phrase="API">">
+<ul>
+<li><label><input type="text" name="tidy_api" id="tidy_api" class="text full" value="<mt:var name="tidy_api" escape="html">" /></label></li>
+</ul>
+</mtapp:setting>
+<mt:else>
+<mtapp:setting
+    id="preview_template_for_tidy"
+    label="<__trans phrase="Preview Template">">
+<ul>
+<li><textarea rows="10" class="text high full" name="preview_template_for_tidy" id="preview_template_for_tidy"><mt:var name="preview_template_for_tidy" escape="html"></textarea></li>
+</ul>
+</mtapp:setting>
+</mt:unless>

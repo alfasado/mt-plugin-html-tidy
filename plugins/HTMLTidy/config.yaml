@@ -1,0 +1,20 @@
+name: HTMLTidy
+id:   HTMLTidy
+version: 0.1
+author_name: Alfasado Inc.
+author_link: http://alfasado.net/
+description: <__trans phrase="Check your HTML using HTML Tidy Gateway.">
+l10n_class: HTMLTidy::L10N
+system_config_template: config.tmpl
+blog_config_template: config.tmpl
+settings:
+    tidy_api:
+        default: http://altstyle.alfasado.net/html-tidy-api.cgi
+    preview_template_for_tidy:
+callbacks:
+    MT::App::CMS::template_source.edit_entry: HTMLTidy::CMS::_cb_edit_entry
+applications:
+    cms:
+        methods:
+            preview_with_html_tidy: HTMLTidy::CMS::_app_cms_preview_with_html_tidy
+
